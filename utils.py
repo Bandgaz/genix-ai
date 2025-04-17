@@ -8,7 +8,7 @@ def generate_text(prompt):
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "mistralai/mistral-7b-instruct",
+        "model": "mistralai/mistral-7b-instruct",  # или можешь заменить на 'openai/gpt-3.5-turbo'
         "messages": [
             {"role": "user", "content": prompt}
         ]
