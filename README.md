@@ -1,14 +1,16 @@
-# Genix AI 🤖
+# Genix AI 🤖 — Telegram AI Bot
 
-GPT-базированный Telegram-бот на базе OpenRouter.ai
+GPT-базированный Telegram-бот, который генерирует:
+- посты ✍️
+- бизнес-идеи 💡
+- шутки 😂
+- цитаты 📜
 
-## 🚀 Как запустить
+## ✅ Стек
+- Python
+- aiogram
+- OpenRouter AI (Mistral 7B / GPT-3.5)
+- Telegram Bot API
+
+## 🚀 Запуск локально
 ```bash
-pip install -r requirements.txt
-python bot.py
-```
-
-## ☁️ Деплой на Render
-- Загрузите в GitHub
-- Подключите как Background Worker
-- Укажите переменные окружения: TELEGRAM_BOT_TOKEN и OPENROUTER_API_KEY
