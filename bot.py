@@ -1,21 +1,18 @@
-
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from config import BOT_TOKEN
 from utils import generate_text
 from collections import defaultdict
-import logging
-import os
-
-logging.basicConfig(level=logging.INFO)
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
 
+# Хранилище лимитов
 user_requests = defaultdict(int)
 FREE_LIMIT = 5
 
+# Меню-кнопки
 menu_kb = ReplyKeyboardMarkup(resize_keyboard=True)
 menu_kb.add(
     KeyboardButton("✍️ Сгенерировать пост"),
@@ -68,13 +65,10 @@ async def handle_text(message: types.Message):
     prompt = prompt_map.get(user_input, user_input)
 
     await message.reply("⏳ Генерирую...")
-    try:
-        result = generate_text(prompt)
-        await message.reply(result)
-        user_requests[user_id] += 1
-    except Exception as e:
-        logging.error(f"Ошибка генерации: {e}")
-        await message.reply("❌ Произошла ошибка при генерации ответа. Попробуй позже.")
+    result = generate_text(prompt)
+    await message.reply(result)
+
+    user_requests[user_id] += 1
 
 if __name__ == "__main__":
     executor.start_polling(dp)
